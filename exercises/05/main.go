@@ -13,7 +13,7 @@ func main() {
 	if error != nil {
 		fmt.Println(error)
 	}
-	first5Stories := result.Urls[:1]
+	first5Stories := result.Urls[:5]
 
 	var urls []string
 	for _, urlObj := range first5Stories {
