@@ -48,6 +48,8 @@ func main() {
 	productRoutes := v1.Group("/products")
 	// productRoutes.Use(middleware.RequiredAuth(appCtx, secretKey))
 	productRoutes.GET("", producthdl.GetListProducts(appCtx))
+	productRoutes.POST("", producthdl.CreateProduct(appCtx))
+	productRoutes.DELETE("/:product-id", producthdl.DeleteProduct(appCtx))
 
 	r.Run(":" + "8000")
 }
