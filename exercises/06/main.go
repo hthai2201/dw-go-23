@@ -50,6 +50,7 @@ func main() {
 	productRoutes.GET("", producthdl.GetListProducts(appCtx))
 	productRoutes.POST("", producthdl.CreateProduct(appCtx))
 	productRoutes.DELETE("/:product-id", producthdl.DeleteProduct(appCtx))
+	productRoutes.PUT("/:product-id", producthdl.UpdateProduct(appCtx))
 
 	r.Run(":" + "8000")
 }

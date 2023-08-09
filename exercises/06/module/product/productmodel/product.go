@@ -4,7 +4,7 @@ import (
 	"github.com/hthai2201/dw-go-23/exercises/06/common"
 )
 
-const EntityName = "User"
+const EntityName = "Product"
 
 type Product struct {
 	common.SQLModel `json:",inline"`
