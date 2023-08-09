@@ -9,6 +9,8 @@ import (
 	"github.com/hthai2201/dw-go-23/exercises/06/appctx"
 	"github.com/hthai2201/dw-go-23/exercises/06/middleware"
 	"github.com/hthai2201/dw-go-23/exercises/06/module/auth/authhdl"
+	"github.com/hthai2201/dw-go-23/exercises/06/module/cart/carthdl"
+	"github.com/hthai2201/dw-go-23/exercises/06/module/cart/cartmodel"
 	"github.com/hthai2201/dw-go-23/exercises/06/module/product/producthdl"
 	"github.com/hthai2201/dw-go-23/exercises/06/module/product/productmodel"
 	"github.com/hthai2201/dw-go-23/exercises/06/module/user/usermodel"
@@ -28,7 +30,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	db.AutoMigrate(&usermodel.User{}, &productmodel.Product{})
+	db.AutoMigrate(&usermodel.User{}, &productmodel.Product{}, &cartmodel.Cart{})
 	appCtx := appctx.NewAppContext(db.Debug())
 
 	r := gin.Default()
@@ -51,6 +53,13 @@ func main() {
 	productRoutes.POST("", producthdl.CreateProduct(appCtx))
 	productRoutes.DELETE("/:product-id", producthdl.DeleteProduct(appCtx))
 	productRoutes.PUT("/:product-id", producthdl.UpdateProduct(appCtx))
+
+	cartRoutes := v1.Group("/cart")
+	// cartRoutes.Use(middleware.RequiredAuth(appCtx, secretKey))
+	cartRoutes.GET("", carthdl.GetListCartProducts(appCtx))
+	cartRoutes.POST("/add", carthdl.AddCartProduct(appCtx))
+	cartRoutes.DELETE("/remove", carthdl.RemoveCartProduct(appCtx))
+	cartRoutes.POST("/checkout", carthdl.RemoveCartProduct(appCtx))
 
 	r.Run(":" + "8000")
 }
