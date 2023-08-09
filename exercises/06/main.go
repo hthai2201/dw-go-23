@@ -59,7 +59,7 @@ func main() {
 	cartRoutes.GET("", carthdl.GetListCartProducts(appCtx))
 	cartRoutes.POST("/add", carthdl.AddCartProduct(appCtx))
 	cartRoutes.DELETE("/remove", carthdl.RemoveCartProduct(appCtx))
-	cartRoutes.POST("/checkout", carthdl.RemoveCartProduct(appCtx))
+	cartRoutes.POST("/checkout", carthdl.CheckoutCart(appCtx))
 
 	r.Run(":" + "8000")
 }
