@@ -36,7 +36,7 @@ func (m *MockAddCartProductStorage) RemoveProduct(ctx context.Context, productId
 	return m.RemoveProductFunc(ctx, productId)
 }
 
-func TestAddCartProductRepo_AddCartProduct_Success(t *testing.T) {
+func TestCartRepo_AddCartProduct_Success(t *testing.T) {
 
 	type args struct {
 		cartProduct cartmodel.CartProductAdd
