@@ -27,6 +27,14 @@ func NewAddCartProductRepo(store AddCartProductStorage) *addCartProductRepo {
 }
 func (repo *addCartProductRepo) AddCartProduct(ctx context.Context, data *cartmodel.CartProductAdd) error {
 	cart, err := repo.store.FindProduct(ctx, map[string]interface{}{"product_id": data.ProductId, "status": 1})
+	if err != nil {
+		err = repo.store.AddProduct(ctx, data)
+		if err != nil {
+			return common.ErrCannotUpdateEntity(cartmodel.EntityName, err)
+		}
+		return nil
+	}
+
 	if cart == nil {
 		if cart.Product.Quantity < data.Quantity {
 			return common.ErrCannotUpdateEntity("Quantity", err)

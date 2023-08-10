@@ -2,6 +2,7 @@ package common
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 )
 
@@ -64,4 +65,12 @@ func (e *AppError) RootError() error {
 
 func (e *AppError) Error() string {
 	return e.RootError().Error()
+}
+
+func (e *AppError) Is(target error) bool {
+	if err, ok := target.(*AppError); ok {
+		fmt.Println(err.Key)
+		return e.Key == err.Key
+	}
+	return false
 }
