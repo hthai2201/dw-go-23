@@ -1,1 +1,2 @@
-https://docs.google.com/spreadsheets/d/1Iz1XxwPHitm6brlb7e-9OGsSTTXjlyGoKglbcIekjpI/edit#gid=1046600081
+sheet: https://docs.google.com/spreadsheets/d/1Iz1XxwPHitm6brlb7e-9OGsSTTXjlyGoKglbcIekjpI/edit#gid=1046600081
+playlist: https://www.youtube.com/playlist?list=PLJQjDc_WbmY9uf8e0pnV9GkAXk8ZBB6_D
