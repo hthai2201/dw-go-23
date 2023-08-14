@@ -14,7 +14,7 @@ import (
 	"github.com/hthai2201/dw-go-23/exercises/06/module/product/producthdl"
 	"github.com/hthai2201/dw-go-23/exercises/06/module/product/productmodel"
 	"github.com/hthai2201/dw-go-23/exercises/06/module/user/usermodel"
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
@@ -25,7 +25,7 @@ import (
 func main() {
 	dbConStr := os.Getenv("DBConnStr")
 	secretKey := os.Getenv("SECRET_KEY")
-	db, err := gorm.Open(mysql.Open(dbConStr), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(dbConStr), &gorm.Config{})
 
 	if err != nil {
 		log.Fatalln(err)
