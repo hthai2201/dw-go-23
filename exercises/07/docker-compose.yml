@@ -1,16 +1,15 @@
 version: "3.9"
 services:
-  mysql:
-    image: mysql
-    container_name: mysql_container
-    environment:
-      MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: go-exercies-06
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
-    ports:
-      - "3306:3306"
+  postgres:
+    container_name: postgres
+    image: postgres
     volumes:
-      - mysql_data:/var/lib/mysql
+      - pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: exs07
+    ports:
+      - 5432:5432
 volumes:
-  mysql_data:
+  pg-data:
